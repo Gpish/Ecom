@@ -12,8 +12,8 @@ public class ProductResponseDTO {
     private long id;
     private String title;
     private String description;
-    private float price;
+    private Float price;
     private String imageURL;
-    private String category;
-
+    private CategoryModel category;
+    
 }

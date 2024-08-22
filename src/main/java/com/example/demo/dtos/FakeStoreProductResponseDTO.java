@@ -7,8 +7,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter
-@Setter
-public class FakeStoreResponseDTO {
+@Setter     // this is the PUT/POST contract with the 3rd party service layer FakeStore
+public class FakeStoreProductResponseDTO {
     private long id;
     private String title;
     private String description;
@@ -16,16 +16,21 @@ public class FakeStoreResponseDTO {
     private String image;
     private String category;
 
-    // to convert FakeStoreResponseDTO to ProductModel to be served by service layer
+    // to convert FakeStoreProductResponseDTO to ProductModel to be served by service layer
     public ProductModel toProduct() {
         ProductModel productModel = new ProductModel();
 
         productModel.setId(this.id);
         productModel.setTitle(this.title);
         productModel.setDescription(this.description);
-        productModel.setPrice(Float.parseFloat(this.price));
+        productModel.setPrice(Float.valueOf(this.price));
         productModel.setImageURL(this.image);
-        productModel.setCategory(new CategoryModel(this.category));
+
+        CategoryModel category = new CategoryModel();
+        category.setName(this.category);
+        category.setId(category.getName().length());
+        productModel.setCategory(category);
+
         return productModel;
     }
 }

@@ -2,7 +2,7 @@ package com.example.demo.models;
 
 import com.example.demo.models.CategoryModel;
 import com.example.demo.dtos.ProductResponseDTO;
-import com.example.demo.dtos.FakeStoreResponseDTO;
+import com.example.demo.dtos.FakeStoreProductResponseDTO;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -25,7 +25,7 @@ public class ProductModel {
         productResponseDTO.setDescription(this.description);
         productResponseDTO.setPrice(this.price);
         productResponseDTO.setImageURL(this.imageURL);
-        productResponseDTO.setCategory(this.category.getName());
+        productResponseDTO.setCategory(this.category);
 
         return productResponseDTO;
     }
